@@ -53,6 +53,7 @@ const onInput = debounce(async event => {
         option.addEventListener('click', () => {
             dropdown.classList.remove('is-active')
             input.value = movie.Title
+            onMovieSelect(movie)
         })
 
         resultsWrapper.appendChild(option)
@@ -65,4 +66,14 @@ document.addEventListener('click', event => {
         dropdown.classList.remove('is-active')
     }
 })
+
+const onMovieSelect = async movie => {
+    const res = await axios.get('http://www.omdbapi.com/', {
+        params: {
+            apikey: 'c4e90420',
+            i: movie.imdbID
+        }
+    });
+    console.log(res.data)
+}
 
