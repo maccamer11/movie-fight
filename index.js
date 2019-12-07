@@ -74,6 +74,22 @@ const onMovieSelect = async movie => {
             i: movie.imdbID
         }
     });
-    console.log(res.data)
+    document.querySelector('#summary').innerHTML = movieTemplate(res.data)
 }
 
+const movieTemplate = (movieDetail) => {
+    return `
+        <article class="media">
+            <figure class="media-left">
+                <p class="image">
+                    <img src="${movieDetail.Poster}"
+                </p>
+            </figure>
+            <div class="media-content">
+                <h1>${movieDetail.Title}</h1>
+                <h4>${movieDetail.Genre}</h4>
+                <p>${movieDetail.Plot}</p>
+            </div>
+        </article>
+    `
+}
