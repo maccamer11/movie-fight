@@ -50,3 +50,9 @@ const onInput = debounce(async event => {
 })
 input.addEventListener('input', onInput, 500)
 
+document.addEventListener('click', event => {
+    if (!root.contains(event.target)) {
+        dropdown.classList.remove('is-active')
+    }
+})
+
